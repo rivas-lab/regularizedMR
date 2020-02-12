@@ -41,3 +41,12 @@ prox_grad = function(a, b, C,lambda, t=0.01, x=NULL, y=NULL, eps=0.0001){
 wrapper = function(se, beta_Y, beta_X, lambda, t=0.01, x=NULL, y=NULL, eps=1e-7){
   prox_grad(1/(se^2), beta_Y, as.matrix(beta_X),lambda, t, x, y, eps)
 }
+
+# simple test case just to see the algorithm converges
+# J = 20
+# p = 2
+# se = rnorm(J)^2+1
+# beta_Y = rnorm(J)
+# beta_X = matrix(rnorm(J*p), J, p)
+# lambda = 0.1
+# wrapper(se, beta_Y, beta_X, lambda)
