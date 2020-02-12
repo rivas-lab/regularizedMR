@@ -1,2 +1,2 @@
 # regularizedMR
-MR using L1 penalty 
+mutltivariable MR using L1 penalty 
