@@ -38,8 +38,12 @@ prox_grad = function(a, b, C,lambda, t=0.01, x=NULL, y=NULL, eps=0.0001){
   return(list(theta0=x,  thetaL=y))
 }
 
-wrapper = function(se, beta_Y, beta_X, lambda, t=0.01, x=NULL, y=NULL, eps=1e-7){
-  prox_grad(1/(se^2), beta_Y, as.matrix(beta_X),lambda, t, x, y, eps)
+wrapper = function(se, beta_Y, beta_X, lambda, t=0.01, x=NULL, y=NULL, eps=1e-7, standardizese = FALSE){
+  if(standardizese){
+     prox_grad(1/((se/min(se))^2), beta_Y, as.matrix(beta_X),lambda, t, x, y, eps)
+    }else{
+     prox_grad(1/(se^2), beta_Y, as.matrix(beta_X),lambda, t, x, y, eps)
+    }
 }
 
 # simple test case just to see the algorithm converges
